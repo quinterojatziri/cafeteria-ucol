@@ -34,8 +34,11 @@ Clona el repositorio e instala las dependencias:
 
 
 git clone https://github.com/quinterojatziri/cafeteria-ucol.git
+
 cd app-cafeteria-ucol
+
 npm install
+
 npm run dev
 
 Para el build de producción:
