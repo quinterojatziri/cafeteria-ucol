@@ -33,7 +33,7 @@ Integrantes:
 Clona el repositorio e instala las dependencias:
 
 
-git clone https://github.com/TU_USUARIO/app-cafeteria-ucol.git
+git clone https://github.com/quinterojatziri/cafeteria-ucol.git
 cd app-cafeteria-ucol
 npm install
 npm run dev
