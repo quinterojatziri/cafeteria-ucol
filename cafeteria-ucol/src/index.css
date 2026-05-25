@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body, #root {
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  background: #120804;
+  overflow: hidden;
+}
+
+/* ── Scrollbar hidden ───────────────────────────────────────── */
+.no-scroll { scrollbar-width: none; }
+.no-scroll::-webkit-scrollbar { display: none; }
+
+/* ── Skeleton shimmer ───────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #F5EFE6 25%, #EAD9BE 50%, #F5EFE6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 8px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ACCESSIBILITY MODES
+   ════════════════════════════════════════════════════════════ */
+
+/* 1. Texto grande — escala todos los tamaños px de Tailwind ~15% */
+body.a11y-large-text [class*="text-[10px]"] { font-size: 12px !important; }
+body.a11y-large-text [class*="text-[11px]"] { font-size: 13px !important; }
+body.a11y-large-text [class*="text-[12px]"] { font-size: 14px !important; }
+body.a11y-large-text [class*="text-[13px]"] { font-size: 15px !important; }
+body.a11y-large-text [class*="text-[14px]"] { font-size: 16px !important; }
+body.a11y-large-text [class*="text-[15px]"] { font-size: 17px !important; }
+body.a11y-large-text [class*="text-[16px]"] { font-size: 18px !important; }
+body.a11y-large-text [class*="text-[19px]"] { font-size: 22px !important; }
+body.a11y-large-text [class*="text-[21px]"] { font-size: 24px !important; }
+body.a11y-large-text [class*="text-[23px]"] { font-size: 26px !important; }
+body.a11y-large-text [class*="text-[32px]"] { font-size: 37px !important; }
+body.a11y-large-text [class*="text-[46px]"] { font-size: 53px !important; }
+/* Clases estándar de Tailwind (text-xs, text-sm, etc.) */
+body.a11y-large-text { font-size: 115% !important; }
+/* Altura de línea para evitar solapamiento */
+body.a11y-large-text *        { line-height: 1.5 !important; }
+body.a11y-large-text h1, body.a11y-large-text h2 { line-height: 1.3 !important; }
+
+/* 2. Alto contraste */
+body.a11y-high-contrast .bg-brown,
+body.a11y-high-contrast [class*="bg-brown"] { background-color: #000 !important; border: 1px solid #FFF !important; }
+body.a11y-high-contrast .bg-white,
+body.a11y-high-contrast .bg-cream-DEFAULT,
+body.a11y-high-contrast [class*="bg-cream"] { background-color: #0A0A0A !important; }
+body.a11y-high-contrast .text-brown,
+body.a11y-high-contrast [class*="text-brown"] { color: #FFFFFF !important; }
+body.a11y-high-contrast .text-black,
+body.a11y-high-contrast [class*="text-black"] { color: #FFFFFF !important; }
+body.a11y-high-contrast .text-brown/40,
+body.a11y-high-contrast [class*="text-brown/40"] { color: #FFFFFF !important; }
+body.a11y-high-contrast .text-brown/35,
+body.a11y-high-contrast [class*="text-brown/35"] { color: #FFFFFF !important; }
+body.a11y-high-contrast .text-beige,
+body.a11y-high-contrast [class*="text-beige"] { color: #FFFF00 !important; }
+
+/* Texto más fuerte para usuarios con problemas de visión sobre fondos claros */
+[class*="text-brown/35"],
+[class*="text-brown/40"],
+[class*="text-brown/45"],
+[class*="text-brown/50"],
+[class*="text-brown/60"] {
+  color: #4A2F18 !important;
+}
+body.a11y-high-contrast .text-accent,
+body.a11y-high-contrast [class*="text-accent"] { color: #FF8800 !important; }
+body.a11y-high-contrast .border-cream-border,
+body.a11y-high-contrast [class*="border-cream-border"] { border-color: #AAA !important; }
+body.a11y-high-contrast .bg-cream-border,
+body.a11y-high-contrast [class*="bg-cream-border"] { background-color: #1D1D1D !important; }
+body.a11y-high-contrast .bg-accent,
+body.a11y-high-contrast [class*="bg-accent"] { background-color: #FF8800 !important; }
+body.a11y-high-contrast .bg-matcha,
+body.a11y-high-contrast [class*="bg-matcha"] { background-color: #00AA44 !important; }
+
+/* 3. Modo oscuro */
+body.a11y-dark .bg-cream-DEFAULT { background-color: #1A0E08 !important; }
+body.a11y-dark .bg-white         { background-color: #261610 !important; }
+body.a11y-dark .bg-cream-dark    { background-color: #2E1C10 !important; }
+body.a11y-dark .border-cream-border { border-color: #3A2218 !important; }
+body.a11y-dark .text-brown       { color: #FFFFFF !important; }
+body.a11y-dark [class*="text-brown"] { color: #FFFFFF !important; }
+body.a11y-dark .text-beige       { color: #FFFFFF !important; }
+body.a11y-dark [class*="text-beige"] { color: #FFFFFF !important; }
+body.a11y-dark .text-black,
+body.a11y-dark [class*="text-black"] { color: #FFFFFF !important; }
+body.a11y-dark .text-brown/40,
+body.a11y-dark .text-brown/60,
+body.a11y-dark .text-brown/70,
+body.a11y-dark .text-brown/80,
+body.a11y-dark .text-brown/90,
+body.a11y-dark [class*="text-brown/"] { color: #FFFFFF !important; }
+
+/* 4. Sin animaciones */
+body.a11y-no-anim *,
+body.a11y-no-anim *::before,
+body.a11y-no-anim *::after {
+  animation: none !important;
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition: none !important;
+  transition-duration: 0.001ms !important;
+  transition-property: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* 5. Botones grandes */
+body.a11y-large-touch button,
+body.a11y-large-touch [role="button"],
+body.a11y-large-touch input,
+body.a11y-large-touch [type="button"],
+body.a11y-large-touch [type="submit"] { min-height: 50px !important; min-width: 50px !important; padding: 14px 16px !important; font-size: 16px !important; }
+body.a11y-large-touch .product-add-btn { width: 38px !important; height: 38px !important; }
+body.a11y-large-touch .qty-btn-a11y { width: 40px !important; height: 40px !important; }
+body.a11y-large-touch a { padding: 14px 16px !important; display: inline-block !important; }
+
+/* 6. Fuente dislexia */
+body.a11y-dyslexia,
+body.a11y-dyslexia * {
+  font-family: 'Courier New', Courier, monospace !important;
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.18em !important;
+  line-height: 1.85 !important;
+}
+
+/* 7. Espaciado cognitivo — afecta toda la app via html font-size (rem-based utilities) */
+/* La clase también se añade al <html> desde A11yPanel para escalar los rem de Tailwind */
+html.a11y-spacing { font-size: 119% !important; }
+body.a11y-spacing .grid-cols-2 { gap: 1rem !important; }
+body.a11y-spacing [class*="space-y-3"] > * + * { margin-top: 1rem !important; }
+body.a11y-spacing [class*="gap-2"]:not([class*="gap-2."]):not([class*="gap-2.5"]) { gap: 0.75rem !important; }
+body.a11y-spacing [class*="gap-3"]:not([class*="gap-3."]):not([class*="gap-3.5"]) { gap: 1rem !important; }
+body.a11y-spacing .card-spacing,
+body.a11y-spacing [class*="mb-2"] { margin-bottom: 0.85rem !important; }
+body.a11y-spacing [class*="mb-4"] { margin-bottom: 1.4rem !important; }
+
+/* 8. Focus visible mejorado */
+:focus-visible {
+  outline: 2px solid #D96228;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Screen reader live region */
+.sr-live {
+  position: absolute;
+  left: -9999px;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Skeleton modo oscuro */
+body.a11y-dark .skeleton {
+  background: linear-gradient(90deg, #2E1C10 25%, #3A2218 50%, #2E1C10 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
